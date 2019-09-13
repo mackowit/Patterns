@@ -8,16 +8,6 @@ public class TestingMain {
 
         //testing class Simpleuser
 
-        SimpleUser simpleUser = new SimpleUser("theForumUser");
-
-        String result = simpleUser.getUsername();
-
-        if (result.equals("theForumUser")){
-            System.out.println("test OK");
-        } else {
-            System.out.println("Error!");
-        }
-
         //testing class calculator
         int digit1 = 10;
         int digit2 = 5;
