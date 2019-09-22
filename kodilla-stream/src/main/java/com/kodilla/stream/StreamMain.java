@@ -1,26 +1,24 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.forumuser.Forum;
-import com.kodilla.stream.forumuser.ForumUser;
-
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.kodilla.stream.beautyfier.PoemBeautyfier;
 
 public class StreamMain {
           public static void main(String[] args) {
-              Forum theForumUsers = new Forum();
 
-              Map<Integer, ForumUser> theResultMapOfForumUsers = theForumUsers.getList().stream()
-                      .filter(forumUser -> forumUser.getSex() == 'M')
-                      .filter(forumUser -> forumUser.getBirthDate().getYear() <= 1999)
-                      .filter(forumUser -> forumUser.getNumberOfPosts() > 0)
-                      .collect(Collectors.toMap(ForumUser::getUserID, forumUser -> forumUser));
+              PoemBeautyfier poemBeautyfier = new PoemBeautyfier();
 
-              System.out.println("# elements: " + theResultMapOfForumUsers.size());
-              theResultMapOfForumUsers.entrySet().stream()
-                      .map(entry -> entry.getKey() + ": " + entry.getValue())
-                      .forEach(System.out::println);
-        }
+              poemBeautyfier.beautify("Lorem ipsum dolor", (poemToDecorate -> "ABC" + poemToDecorate + "ABC"));
+              poemBeautyfier.beautify("Lorem ipsum dolor", (poemToDecorate -> poemToDecorate.toUpperCase()));
+              poemBeautyfier.beautify("Lorem ipsum dolor", (poemToDecorate -> poemToDecorate.replace('o', '2')));
+              poemBeautyfier.beautify("Lorem ipsum dolor", (poemToDecorate -> {
+                  String decoratedPoem = "";
+                  for(int i =0; i<poemToDecorate.length(); i++) {
+                      decoratedPoem = decoratedPoem + poemToDecorate.charAt(poemToDecorate.length()-(1+i));
+                  }
+                  return decoratedPoem;
+              }));
 
+
+          }
 }
+
