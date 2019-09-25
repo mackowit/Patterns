@@ -14,7 +14,7 @@ public class FlightFinder {
         boolean result = false;
 
         for(Map.Entry<String, Boolean> entry : flightMap.entrySet()) {
-            if(flight.arrivalAirport == entry.getKey() || flight.departureAirport == entry.getKey()) result = entry.getValue();
+            if(flight.getArrivalAirport() == entry.getKey() || flight.getDepartureAirport() == entry.getKey()) result = entry.getValue();
         }
 
         if(result) System.out.println("Choosen airport is on our flight map!!");
